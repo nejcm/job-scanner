@@ -11,10 +11,10 @@ Aggregate job postings from multiple sources, normalize them into a unified sche
 ## Usage
 
 ```bash
-bun run job-scanner
-bun run job-scanner --config config.yaml
-bun run job-scanner --format csv
-bun run job-scanner --format md   # writes Markdown report
+bun run scan
+bun run scan --config config.yaml
+bun run scan --format csv
+bun run scan --format md   # writes Markdown report
 ```
 
 Behavior: fetch from enabled sources → normalize → enrich → dedupe → filter → score → sort → write `./out/jobs-YYYY-MM-DD.md` and/or `./out/jobs-YYYY-MM-DD.csv` → print summary (counts per source, after dedupe/filter, top filter reasons).
