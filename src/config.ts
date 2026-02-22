@@ -10,6 +10,7 @@ function parseConfigObject(raw: Record<string, unknown>): Config {
   const weights = raw.scoringWeights as Record<string, number> | undefined;
   const sources = (raw.sources as Record<string, unknown>) ?? {};
   const rss = sources.rss as Record<string, unknown> | undefined;
+  const linkedinFeeds = sources.linkedinFeeds as Record<string, unknown> | undefined;
   const def = DEFAULT_CONFIG;
   return {
     keywordsInclude: raw.keywordsInclude != null ? arr(raw.keywordsInclude) : def.keywordsInclude,
@@ -42,6 +43,9 @@ function parseConfigObject(raw: Record<string, unknown>): Config {
       remoteco: sources.remoteco === true,
       remoterocketship: sources.remoterocketship === true,
       linkedin: sources.linkedin === true,
+      linkedinFeeds: {
+        feeds: linkedinFeeds?.feeds != null ? arr(linkedinFeeds.feeds) : def.sources.linkedinFeeds?.feeds ?? [],
+      },
       wellfound: sources.wellfound === true,
       rss: { feeds: rss?.feeds != null ? arr(rss.feeds) : def.sources.rss?.feeds ?? [] },
     },

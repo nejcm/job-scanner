@@ -51,8 +51,11 @@ export function getConnectors(config: Config): IJobConnector[] {
       })
     );
   }
-  if (config.sources.linkedin) {
-    console.warn("Skipping linkedin: no public jobs API + automation restrictions.");
+  const linkedinFeeds = config.sources.linkedinFeeds?.feeds;
+  if (config.sources.linkedin && linkedinFeeds?.length) {
+    list.push(createRssConnector(linkedinFeeds, "linkedin-feeds"));
+  } else if (config.sources.linkedin) {
+    console.warn("Skipping linkedin: add sources.linkedinFeeds.feeds (RSS URLs) for third-party LinkedIn-compatible feeds.");
   }
   if (config.sources.wellfound) {
     console.warn("Skipping wellfound: no stable unrestricted public jobs API.");

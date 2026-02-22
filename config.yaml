@@ -29,5 +29,7 @@ sources:
   remoterocketship: true
   linkedin: false
   wellfound: false
+  linkedinFeeds:
+    feeds: []
   rss:
     feeds: []

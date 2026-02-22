@@ -28,6 +28,9 @@ sources:
   remoteco: false
   remoterocketship: false
   linkedin: false
+  # Third-party RSS feeds that syndicate LinkedIn-posted jobs. Enable linkedin: true and add URLs.
+  linkedinFeeds:
+    feeds: []
   wellfound: false
   rss:
     feeds: []

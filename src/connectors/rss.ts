@@ -12,9 +12,13 @@ async function fetchWithTimeout(url: string, headers: Record<string, string>): P
   }
 }
 
-export function createRssConnector(feeds: string[]): IJobConnector {
+/**
+ * @param feeds - RSS feed URLs to fetch
+ * @param sourceName - Report name in summaries (e.g. "rss" or "linkedin-feeds")
+ */
+export function createRssConnector(feeds: string[], sourceName = "rss"): IJobConnector {
   return {
-    name: "rss",
+    name: sourceName,
     async fetch() {
       const all: Record<string, unknown>[] = [];
       for (const url of feeds) {
@@ -22,7 +26,7 @@ export function createRssConnector(feeds: string[]): IJobConnector {
           const res = await fetchWithTimeout(url, { "User-Agent": "JobScanner/1.0" });
           if (!res.ok) continue;
           const text = await res.text();
-          const items = parseRssToRawItems(text, "rss");
+          const items = parseRssToRawItems(text, sourceName);
           for (const item of items) {
             all.push({ ...item, feedUrl: url });
           }

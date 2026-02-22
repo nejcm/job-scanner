@@ -25,8 +25,9 @@ Behavior: fetch from enabled sources → normalize → enrich → dedupe → fil
 - **minSalary**: Optional minimum salary threshold; only applies when set. Jobs with salary below are filtered; jobs without salary are kept or dropped according to `allowMissingSalary`.
 - **sources**: Enable/disable providers:
   - API/RSS: `remoteok`, `weworkremotely`, `workingnomads`, `rss.feeds`
+  - LinkedIn via third-party feeds: set `linkedin: true` and add RSS URLs under `sources.linkedinFeeds.feeds` (see [LinkedIn coverage](#linkedin-coverage-via-third-party-feeds) below)
   - robots-gated HTML: `nodesk`, `builtin`, `remoteineurope`, `remoteco`, `remoterocketship`
-  - restricted-by-default: `linkedin`, `wellfound` (currently skipped with warnings)
+  - restricted-by-default: `wellfound` (skipped with warning)
 
 See `config.example.yaml` for full options (keywords, regions, seniority, scoring weights, sort order).
 
@@ -43,8 +44,10 @@ See `config.example.yaml` for full options (keywords, regions, seniority, scorin
   Supported via this framework: NoDesk, BuiltIn, RemoteInEurope, Remote.co, RemoteRocketship.
   Use only for sites that explicitly allow crawling and comply with their terms and robots.txt.
 
+- **LinkedIn coverage via third-party feeds**
+  Direct scraping of LinkedIn is not supported (no public jobs API; automation is restricted). You can include LinkedIn-relevant jobs via **compliant third-party RSS feeds** that syndicate such postings. Set `linkedin: true` and add feed URLs under `sources.linkedinFeeds.feeds`. Jobs appear as source `linkedin-feeds`. Only use feeds from providers that allow programmatic access per their terms.
+
 - **Excluded by default**
-  - **LinkedIn Jobs**: No public jobs API for general use; automation is restricted without approval.
   - **Wellfound**: No stable public jobs API; policy risk.
 
 Comply with each platform’s terms of service and robots.txt. Prefer official APIs and RSS; use HTML only where permitted.
@@ -55,7 +58,7 @@ Comply with each platform’s terms of service and robots.txt. Prefer official A
 bun test
 ```
 
-Covers scoring (including missing-salary behavior), dedupe (exact and fuzzy), filter (`allowMissingSalary` and min salary), and RemoteOK normalization.
+Covers scoring (including missing-salary behavior), dedupe (exact and fuzzy), filter (`allowMissingSalary` and min salary), RemoteOK normalization, and LinkedIn-feeds (RSS) normalization.
 
 ## License
 

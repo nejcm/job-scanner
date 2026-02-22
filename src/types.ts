@@ -41,6 +41,8 @@ export interface SourcesConfig {
   remoteco?: boolean;
   remoterocketship?: boolean;
   linkedin?: boolean;
+  /** Third-party feeds that syndicate LinkedIn-posted jobs (RSS URLs). Use when linkedin is true. */
+  linkedinFeeds?: { feeds: string[] };
   wellfound?: boolean;
   rss?: { feeds: string[] };
 }
@@ -104,6 +106,7 @@ export const DEFAULT_CONFIG: Config = {
     remoteco: false,
     remoterocketship: false,
     linkedin: false,
+    linkedinFeeds: { feeds: [] },
     wellfound: false,
     rss: { feeds: [] },
   },
