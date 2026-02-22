@@ -1,0 +1,33 @@
+keywordsInclude:
+  ["react", "next.js", "node", "typescript", "fullstack", "frontend"]
+keywordsExclude: ["php", "wordpress"]
+requiredTags: []
+excludedCompanies: []
+remoteOnly: true
+allowedRegions: ["Worldwide", "EU", "APAC", "Asia"]
+minSalary: null
+allowMissingSalary: true
+seniorityAllowed: ["Senior", "Staff", "Lead"]
+employmentTypesAllowed: []
+postedWithinDays: 1
+scoringWeights:
+  keywordMatch: 1
+  tagMatch: 2
+  seniorityMatch: 1
+  salaryMatch: 1
+  excludePenalty: -10
+sortBy: "score"
+sortOrder: "desc"
+sources:
+  remoteok: true
+  weworkremotely: true
+  workingnomads: true
+  nodesk: false
+  builtin: false
+  remoteineurope: false
+  remoteco: false
+  remoterocketship: false
+  linkedin: false
+  wellfound: false
+  rss:
+    feeds: []

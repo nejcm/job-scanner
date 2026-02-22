@@ -1,0 +1,24 @@
+{
+  "name": "job-scanner",
+  "version": "1.0.0",
+  "description": "Aggregate jobs from multiple sources, normalize, filter, score, and export to JSON/CSV",
+  "type": "module",
+  "main": "dist/cli.js",
+  "bin": {
+    "scan": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "bun build src/cli.ts --outdir=dist --target=bun",
+    "scan": "bun run src/cli.ts",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "yaml": "^2.6.1"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}
