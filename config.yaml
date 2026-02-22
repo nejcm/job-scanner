@@ -27,8 +27,8 @@ sources:
   remoteineurope: true
   remoteco: true
   remoterocketship: true
-  linkedin: false
-  wellfound: false
+  linkedin: true
+  wellfound: true
   linkedinFeeds:
     feeds: []
   rss:
